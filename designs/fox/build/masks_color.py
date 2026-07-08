@@ -4,7 +4,7 @@ import os
 from pnglib import decode_palette_png, write_pbm, write_png_rgb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC  = os.path.normpath(os.path.join(HERE, "..", "sticker.PNG"))
+SRC  = os.path.normpath(os.path.join(HERE, "..", "art", "sticker.PNG"))
 BLACK, WHITE, ORANGE = (0, 0, 0), (255, 255, 255), (255, 156, 0)
 
 def nearest(rgb):
@@ -36,4 +36,4 @@ write_pbm(os.path.join(HERE, "orange.pbm"), W, H, orange)
 write_pbm(os.path.join(HERE, "white.pbm"),  W, H, white)
 write_pbm(os.path.join(HERE, "black.pbm"),  W, H, black)
 write_png_rgb(os.path.join(HERE, "partition_view.png"), W, H, view)
-print("wrote orange/white/black.pbm. Next: for m in orange white black; do potrace -s -t 2 -o svg/$m.svg $m.pbm; done")
+print("wrote orange/white/black.pbm. Next: for m in orange white black; do potrace -s -t 2 -o ../art/svg/$m.svg $m.pbm; done")

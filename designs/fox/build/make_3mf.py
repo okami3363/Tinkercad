@@ -1,10 +1,10 @@
 """Pack the 4 multi-colour STL parts into one coloured .3mf (zip + 3MF XML),
 oriented fox-up (panel back on bed). Paths are relative to this script.
-Run:  python3 src/make_3mf.py"""
+Run:  python3 build/make_3mf.py"""
 import os, struct, re, zipfile, xml.etree.ElementTree as ET
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DST  = os.path.normpath(os.path.join(HERE, "..", "steam-machine-fox-multicolor"))
+DST  = os.path.normpath(os.path.join(HERE, "..", "output", "multicolor"))
 OUT  = os.path.join(DST, "fox-panel-multicolor.3mf")
 
 # (file, base-material index)   materials: 0=black 1=orange 2=white

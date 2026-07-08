@@ -6,7 +6,7 @@ import os
 from pnglib import decode_palette_png, write_pbm, write_png_rgb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC  = os.path.normpath(os.path.join(HERE, "..", "sticker.PNG"))
+SRC  = os.path.normpath(os.path.join(HERE, "..", "art", "sticker.PNG"))
 
 def view(path, w, h, bits):
     buf = bytearray()
@@ -33,4 +33,4 @@ write_pbm(os.path.join(HERE, "body.pbm"), W, H, body)
 write_pbm(os.path.join(HERE, "detail.pbm"), W, H, detail)
 view(os.path.join(HERE, "body_view.png"), W, H, body)
 view(os.path.join(HERE, "detail_view.png"), W, H, detail)
-print("wrote body.pbm detail.pbm (+ views). Next: potrace -s -t 4 -o svg/body.svg body.pbm")
+print("wrote body.pbm detail.pbm (+ views). Next: potrace -s -t 4 -o ../art/svg/body.svg body.pbm")

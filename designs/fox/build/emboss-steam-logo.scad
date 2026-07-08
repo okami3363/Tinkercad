@@ -1,9 +1,10 @@
-// Black panel + flat Steam logo (blue circle + white ring + white piston) with
-// a raised 132mm multi-colour fox lounging on top. Flat layer sits flush in a
-// shallow pocket (Y 0..POCKET); fox is raised (Y 0..-EMBOSS) so it covers the
-// logo where they overlap (the white piston stays behind the fox).
+// VARIANT: Black panel + flat Steam logo (blue circle + white ring + white
+// piston) with a raised 132mm multi-colour fox lounging on top. Flat layer sits
+// flush in a shallow pocket (Y 0..POCKET); fox is raised (Y 0..-EMBOSS) so it
+// covers the logo where they overlap (the white piston stays behind the fox).
+// Run from this build/ directory. Outputs go to ../output/steam-logo/.
 
-PANEL_STL = "/Users/fetc_imac24/Documents/Projects/Tinkercad/steam-machine-front-panel-blank-customizable-stl.stl";
+PANEL_STL = "../../../shared/panel-blank.stl";
 PART = "preview";
 
 // ---- circle / logo geometry ----
@@ -24,7 +25,7 @@ S = FOX_W / SVG_W;
 module piston2d() {
     translate([PDX, PDZ]) scale([1, PFLIP])
         resize([PW, PH], auto=false)
-            import("steam_piston.svg", center=true);
+            import("../art/svg/steam_piston.svg", center=true);
 }
 module blue2d() { difference() { circle(d=CIRC_D, $fn=240); piston2d(); } }
 module ring2d() { difference() { circle(d=CIRC_D+2*RING_W, $fn=240); circle(d=CIRC_D, $fn=240); } }
@@ -50,9 +51,9 @@ module fox_on_front(f) {
     translate([FCX, 0, FCZ]) rotate([90, 0, 0])
         translate([0, 0, -EMBED]) linear_extrude(EMBED+EMBOSS) fox_place(f);
 }
-module fox_orange() { fox_on_front("orange.svg"); }
-module fox_white()  { fox_on_front("white.svg"); }
-module fox_black()  { fox_on_front("black.svg"); }
+module fox_orange() { fox_on_front("../art/svg/orange.svg"); }
+module fox_white()  { fox_on_front("../art/svg/white.svg"); }
+module fox_black()  { fox_on_front("../art/svg/black.svg"); }
 
 if      (PART == "panel")      panel_black();
 else if (PART == "blue")       blue_flat();
